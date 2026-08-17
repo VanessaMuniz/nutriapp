@@ -8,10 +8,10 @@ public class Paciente {
     double altura;
 
 public Paciente(String nome, int idade, double peso, double altura) {
-    this.nome = nome;
-    this.idade = idade;
-    this.peso = peso;
-    this.altura = altura;
+        this.nome = nome;
+        this.idade = idade;
+        this.peso = peso;
+        this.altura = altura;
 }
 public void exibirPaciente(){
     System.out.println("Nome: " + this.nome);
