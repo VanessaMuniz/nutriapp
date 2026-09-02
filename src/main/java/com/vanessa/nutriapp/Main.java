@@ -20,6 +20,8 @@ public class Main {
             System.out.println("\n===== MENU =====");
             System.out.println("1 - Cadastrar paciente");
             System.out.println("2 - Listar pacientes");
+            System.out.println("3 - Editar paciente");
+            System.out.println("4 - Excluir paciente");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
 
@@ -32,6 +34,12 @@ public class Main {
                     break;
                 case 2:
                     listarPacientes(pacientes);
+                    break;
+                case 3:
+                    editarPaciente(scanner, pacientes);
+                    break;
+                case 4:
+                    excluirPaciente(scanner, pacientes);
                     break;
                 case 0:
                     executando = false;
@@ -79,5 +87,69 @@ public class Main {
             System.out.println("----------------------------------");
             p.exibirPaciente();
         }
+    }
+
+    public static void editarPaciente(Scanner scanner, ArrayList<Paciente> pacientes) {
+        if (pacientes.isEmpty()) {
+            System.out.println("Nenhum paciente para editar.");
+            return;
+        }
+
+        listarPacientes(pacientes);
+
+        System.out.print("\nDigite o número do paciente que deseja editar: ");
+        int numero = scanner.nextInt();
+        scanner.nextLine();
+
+
+        int indice = numero - 1;
+
+        if (indice < 0 || indice >= pacientes.size()) {
+            System.out.println("Número inválido!");
+            return;
+        }
+
+        Paciente paciente = pacientes.get(indice);
+
+        System.out.println("Editando: " + paciente.getNome());
+
+        System.out.print("Novo nome: ");
+        paciente.setNome(scanner.nextLine());
+
+        System.out.print("Nova idade: ");
+        paciente.setIdade(scanner.nextInt());
+
+        System.out.print("Novo peso (kg): ");
+        paciente.setPeso(scanner.nextDouble());
+
+        System.out.print("Nova altura (m): ");
+        paciente.setAltura(scanner.nextDouble());
+        scanner.nextLine();
+
+        System.out.println("Paciente atualizado com sucesso!");
+    }
+
+
+    public static void excluirPaciente(Scanner scanner, ArrayList<Paciente> pacientes) {
+        if (pacientes.isEmpty()) {
+            System.out.println("Nenhum paciente para excluir.");
+            return;
+        }
+
+        listarPacientes(pacientes);
+
+        System.out.print("\nDigite o número do paciente que deseja excluir: ");
+        int numero = scanner.nextInt();
+        scanner.nextLine();
+
+        int indice = numero - 1;
+
+        if (indice < 0 || indice >= pacientes.size()) {
+            System.out.println("Número inválido!");
+            return;
+        }
+
+        Paciente removido = pacientes.remove(indice);
+        System.out.println("Paciente '" + removido.getNome() + "' excluído com sucesso!");
     }
 }
