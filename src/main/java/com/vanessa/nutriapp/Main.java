@@ -11,7 +11,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        ArrayList<Paciente> pacientes = new ArrayList<>();
+        ArrayList<Paciente> pacientes = PacienteArquivo.carregar();
 
 
         boolean executando = true;
@@ -71,6 +71,7 @@ public class Main {
 
         Paciente paciente = new Paciente(nome, idade, peso, altura);
         pacientes.add(paciente);
+        PacienteArquivo.salvar(pacientes);
 
         System.out.println("Paciente cadastrado com sucesso!");
     }
@@ -125,7 +126,7 @@ public class Main {
         System.out.print("Nova altura (m): ");
         paciente.setAltura(scanner.nextDouble());
         scanner.nextLine();
-
+        PacienteArquivo.salvar(pacientes);
         System.out.println("Paciente atualizado com sucesso!");
     }
 
@@ -150,6 +151,7 @@ public class Main {
         }
 
         Paciente removido = pacientes.remove(indice);
+        PacienteArquivo.salvar(pacientes);
         System.out.println("Paciente '" + removido.getNome() + "' excluído com sucesso!");
     }
 }
