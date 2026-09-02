@@ -12,7 +12,7 @@ public class PacienteArquivo {
 
     private static final String NOME_ARQUIVO = "pacientes.csv";
 
-    // SALVA a lista inteira de pacientes no arquivo
+
     public static void salvar(ArrayList<Paciente> pacientes) {
         try (BufferedWriter escritor = new BufferedWriter(new FileWriter(NOME_ARQUIVO))) {
 
@@ -28,7 +28,7 @@ public class PacienteArquivo {
         }
     }
 
-    // CARREGA os pacientes do arquivo para uma lista
+
     public static ArrayList<Paciente> carregar() {
         ArrayList<Paciente> pacientes = new ArrayList<>();
 
@@ -49,7 +49,7 @@ public class PacienteArquivo {
             }
 
         } catch (IOException e) {
-            // Se o arquivo ainda não existe (primeira execução), apenas começa vazio
+
             System.out.println("Nenhum arquivo de pacientes encontrado. Começando do zero.");
         }
 
